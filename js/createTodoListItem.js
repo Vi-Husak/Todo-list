@@ -1,4 +1,4 @@
-import { removeTodoListItem } from "./removeTodoListItem.js";
+import { removeTodo } from "./removeTodo.js";
 
 const createTodoListItem = (task) => {
   if (task.id) {
@@ -36,7 +36,7 @@ const createTodoListItem = (task) => {
     const btnRemoveElem = document.createElement("button");
     btnRemoveElem.classList.add("app__task-btn", "app__task-btn_remove");
     btnRemoveElem.addEventListener("click", () => {
-      removeTodoListItem(task.id);
+      removeTodo(task.id);
     });
 
     btnsContainer.appendChild(btnEditElem);
