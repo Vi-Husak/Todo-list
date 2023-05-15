@@ -78,6 +78,7 @@ body {
 
 .app__task-label {
   display: flex;
+  gap: 15px;
   align-items: center;
   width: 100%;
   position: relative;
@@ -139,7 +140,16 @@ body {
 }
 
 .app__task-desc {
-  margin: 0;
+  margin: 0 0 0 8px;
+  padding: 0 5px;
+}
+
+.app__task-item.active .app__task-desc {
+  background-color: #fff;
+  cursor: text;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(127, 136, 140, 1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(127, 136, 140, 1);
+  box-shadow: 0px 0px 5px 0px rgba(127, 136, 140, 1);
 }
 
 .app__task-controllers {
@@ -175,4 +185,8 @@ body {
 
 .app__task-btn_remove {
   background-image: url(../img/trash_icon.svg);
+}
+
+.app__task-btn_save {
+  background-image: url(../img/check_icon.svg);
 }

@@ -1,4 +1,5 @@
 import { removeTodo } from "./removeTodo.js";
+import { editTodo } from "./editTodo.js";
 
 const createTodoListItem = (task) => {
   if (task.id) {
@@ -32,6 +33,9 @@ const createTodoListItem = (task) => {
 
     const btnEditElem = document.createElement("button");
     btnEditElem.classList.add("app__task-btn", "app__task-btn_edit");
+    btnEditElem.addEventListener("click", () => {
+      editTodo(task.id);
+    });
 
     const btnRemoveElem = document.createElement("button");
     btnRemoveElem.classList.add("app__task-btn", "app__task-btn_remove");
