@@ -1,11 +1,10 @@
 import { addTodo } from "./addTodo.js";
 import { createTodoListItem } from "./createTodoListItem.js";
+import { tasks } from "./tasksData.js";
 
 const form = document.querySelector("#newtask-form");
 const taskInput = document.querySelector("#newtask-input");
 const taskList = document.querySelector("#task-list");
-
-const tasks = [];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
