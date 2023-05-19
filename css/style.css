@@ -190,3 +190,7 @@ body {
 .app__task-btn_save {
   background-image: url(../img/check_icon.svg);
 }
+
+.app__task-btn_cancel {
+  background-image: url(../img/cancel_icon.svg);
+}

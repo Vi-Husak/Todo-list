@@ -5,8 +5,12 @@ const editTodo = (id) => {
 
   const textElem = liElem.querySelector(".app__task-desc");
 
+  const textValue = textElem.textContent;
+
   const btnsContainer = liElem.querySelector(".app__task-controllers");
-  const btnEditElem = liElem.querySelector(".app__task-btn_edit");
+
+  const btnEditElem = btnsContainer.querySelector(".app__task-btn_edit");
+  const btnRemoveElem = btnsContainer.querySelector(".app__task-btn_remove");
 
   liElem.classList.add("active");
   liElem.addEventListener("click", (e) => {
@@ -15,17 +19,31 @@ const editTodo = (id) => {
 
   textElem.setAttribute("contenteditable", "true");
 
-  const btnRemoveSave = document.createElement("button");
-  btnRemoveSave.classList.add("app__task-btn", "app__task-btn_save");
-  btnRemoveSave.addEventListener("click", () => {
+  const btnSaveTask = document.createElement("button");
+  btnSaveTask.classList.add("app__task-btn", "app__task-btn_save");
+
+  const btnResetTask = document.createElement("button");
+  btnResetTask.classList.add("app__task-btn", "app__task-btn_cancel");
+
+  btnSaveTask.addEventListener("click", () => {
     saveTodo(id);
 
-    btnsContainer.replaceChild(btnEditElem, btnRemoveSave);
+    btnsContainer.replaceChild(btnEditElem, btnSaveTask);
     textElem.setAttribute("contenteditable", "false");
     liElem.classList.remove("active");
   });
 
-  btnsContainer.replaceChild(btnRemoveSave, btnEditElem);
+  btnResetTask.addEventListener("click", () => {
+    textElem.textContent = textValue;
+
+    btnsContainer.replaceChild(btnRemoveElem, btnResetTask);
+    textElem.setAttribute("contenteditable", "false");
+    liElem.classList.remove("active");
+  });
+
+  btnsContainer.replaceChild(btnSaveTask, btnEditElem);
+
+  btnsContainer.replaceChild(btnResetTask, btnRemoveElem);
 };
 
 export { editTodo };
