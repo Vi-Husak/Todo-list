@@ -1,15 +1,15 @@
 import { removeTodo } from "./removeTodo.js";
 import { editTodo } from "./editTodo.js";
 
-const createTodoListItem = (task) => {
-  if (task.id) {
+const createTodoListItem = ({ id, text, checked }) => {
+  if (id) {
     const liElem = document.createElement("li");
     liElem.classList.add("app__task-item");
-    liElem.setAttribute("data-id", task.id);
+    liElem.setAttribute("data-id", id);
 
     const labelElem = document.createElement("label");
     labelElem.classList.add("app__task-label");
-    labelElem.setAttribute("for", task.id);
+    labelElem.setAttribute("for", id);
 
     const checkboxContainer = document.createElement("div");
     checkboxContainer.classList.add("app__task-container");
@@ -17,11 +17,12 @@ const createTodoListItem = (task) => {
     const checkboxElem = document.createElement("input");
     checkboxElem.type = "checkbox";
     checkboxElem.classList.add("app__task-checkbox");
-    checkboxElem.setAttribute("id", task.id);
+    checkboxElem.setAttribute("id", id);
+    checkboxElem.setAttribute("checked", checked);
 
     const taskTextElem = document.createElement("p");
     taskTextElem.classList.add("app__task-desc");
-    taskTextElem.textContent = task.text;
+    taskTextElem.textContent = text;
 
     checkboxContainer.appendChild(checkboxElem);
     checkboxContainer.appendChild(taskTextElem);
@@ -34,13 +35,13 @@ const createTodoListItem = (task) => {
     const btnEditElem = document.createElement("button");
     btnEditElem.classList.add("app__task-btn", "app__task-btn_edit");
     btnEditElem.addEventListener("click", () => {
-      editTodo(task.id);
+      editTodo(id);
     });
 
     const btnRemoveElem = document.createElement("button");
     btnRemoveElem.classList.add("app__task-btn", "app__task-btn_remove");
     btnRemoveElem.addEventListener("click", () => {
-      removeTodo(task.id);
+      removeTodo(id);
     });
 
     btnsContainer.appendChild(btnEditElem);
