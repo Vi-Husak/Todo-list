@@ -1,13 +1,10 @@
 import { tasks } from "./tasksData.js";
-import { removeTodoListItem } from "./removeTodoListItem.js";
 
-const removeTodo = (id) => {
+export default (id) => {
   const index = tasks.findIndex((task) => task.id === id);
 
   if (index !== -1) {
     tasks.splice(index, 1);
-    removeTodoListItem(id);
+    // localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 };
-
-export { removeTodo };
