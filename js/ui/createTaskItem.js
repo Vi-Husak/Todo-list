@@ -1,7 +1,7 @@
 import createElem from "../helpers/createElem.js";
 import deleteButtonListener from "../api/deleteButtonListener.js";
 import editButtonListener from "../api/editButtonListener.js";
-// import onChangeCheckbox from "../api/onChangeCheckbox.js";
+import onChangeCheckbox from "../api/onChangeCheckbox.js";
 
 export default ({ id, text, checked }) => {
   const li = createElem("li", {
@@ -22,9 +22,9 @@ export default ({ id, text, checked }) => {
     ],
     classNames: "app__task-checkbox",
   });
-  // checkbox.addEventListener("change", ({ target }) =>
-  //   onChangeCheckbox(id, target)
-  // );
+  checkbox.addEventListener("change", ({ target }) =>
+    onChangeCheckbox(id, target)
+  );
 
   const p = createElem("p", {
     textContent: text,
