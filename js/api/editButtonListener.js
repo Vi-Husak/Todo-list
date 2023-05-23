@@ -7,11 +7,18 @@ export default (id, li, buttonsContainer) => {
   const buttons = buttonsContainer.querySelectorAll("button");
 
   li.classList.add("active");
-  li.addEventListener("click", (e) => {
-    e.preventDefault();
-  });
+
+  const eventHandler = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+  };
+
+  const clickHandler = (e) => {
+    eventHandler(e);
+  };
 
   p.setAttribute("contenteditable", "true");
+  p.addEventListener("click", clickHandler);
 
   //create new buttons
   const saveButton = createElem("button", {
@@ -30,6 +37,7 @@ export default (id, li, buttonsContainer) => {
       buttonsContainer.replaceChild(buttons[0], saveButton);
       buttonsContainer.replaceChild(buttons[1], cancelButton);
       p.setAttribute("contenteditable", "false");
+      p.removeEventListener("click", clickHandler);
 
       li.classList.remove("active");
     }
