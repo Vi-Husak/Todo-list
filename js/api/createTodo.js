@@ -8,7 +8,7 @@ export default (text) => {
   };
 
   tasks.push(todo);
-  // localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 
   return todo;
 };

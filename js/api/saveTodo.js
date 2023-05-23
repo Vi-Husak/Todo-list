@@ -5,6 +5,6 @@ export default (id, text) => {
 
   if (index !== -1) {
     tasks[index].text = text;
-    // localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 };
