@@ -22,12 +22,17 @@ export default (id, li, buttonsContainer) => {
   });
 
   saveButton.addEventListener("click", () => {
-    saveTodo(id, p.textContent);
+    if (p.textContent.trim()) {
+      p.textContent = p.textContent.trim();
 
-    buttonsContainer.replaceChild(buttons[0], saveButton);
-    buttonsContainer.replaceChild(buttons[1], cancelButton);
-    p.setAttribute("contenteditable", "false");
-    li.classList.remove("active");
+      saveTodo(id, p.textContent);
+
+      buttonsContainer.replaceChild(buttons[0], saveButton);
+      buttonsContainer.replaceChild(buttons[1], cancelButton);
+      p.setAttribute("contenteditable", "false");
+
+      li.classList.remove("active");
+    }
   });
   cancelButton.addEventListener("click", () => {
     p.textContent = text;
