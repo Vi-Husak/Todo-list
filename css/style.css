@@ -100,6 +100,8 @@ body {
   flex-grow: 1;
   position: relative;
   padding-left: 25px;
+  display: flex;
+  align-items: center;
 }
 
 .app__task-checkbox {
@@ -142,6 +144,7 @@ body {
 .app__task-desc {
   margin: 0 0 0 8px;
   padding: 0 5px;
+  flex-grow: 1;
 }
 
 .app__task-item.active .app__task-desc {
