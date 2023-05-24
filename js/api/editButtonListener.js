@@ -18,7 +18,7 @@ export default (id, li, buttonsContainer) => {
   };
 
   p.setAttribute("contenteditable", "true");
-  p.addEventListener("click", clickHandler);
+  li.addEventListener("click", clickHandler);
 
   //create new buttons
   const saveButton = createElem("button", {
@@ -37,7 +37,10 @@ export default (id, li, buttonsContainer) => {
       buttonsContainer.replaceChild(buttons[0], saveButton);
       buttonsContainer.replaceChild(buttons[1], cancelButton);
       p.setAttribute("contenteditable", "false");
-      p.removeEventListener("click", clickHandler);
+
+      setTimeout(() => {
+        li.removeEventListener("click", clickHandler);
+      }, 0);
 
       li.classList.remove("active");
     }
@@ -48,6 +51,11 @@ export default (id, li, buttonsContainer) => {
     buttonsContainer.replaceChild(buttons[0], saveButton);
     buttonsContainer.replaceChild(buttons[1], cancelButton);
     p.setAttribute("contenteditable", "false");
+
+    setTimeout(() => {
+      li.removeEventListener("click", clickHandler);
+    }, 0);
+
     li.classList.remove("active");
   });
 
